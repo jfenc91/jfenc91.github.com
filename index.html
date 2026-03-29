@@ -1,36 +1,261 @@
 <!DOCTYPE html>
-<html>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeff Fenchel - Software Engineer & Outdoor Enthusiast</title>
+  <meta name="description" content="Jeff Fenchel - Software Engineer, Data Platform Builder, and outdoor adventurer based in the Sierra Nevada.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">JF</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#adventures">Adventures</a>
+        <a href="#professional">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Arizonia" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
-    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <style>
-      #app {
-        height: 100vh;
-        width: 100vw;
-      }
-      html, body {
-        height: 100vh;
-        width: 100vw;
-        margin: 0px;
-      }
-    </style>
-  </head>
-    <body>
-    <div id="app"></div>
-    <script src="/bundle.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131464131-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img src="img/hero-fireworks.jpg" alt="Fireworks over Donner Lake at dusk" loading="eager">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-name">Jeff Fenchel</h1>
+      <p class="hero-tagline">Software Engineer &amp; Data Enthusiast</p>
+      <a href="#about" class="hero-scroll" aria-label="Scroll down">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
+    </div>
+  </section>
 
-      gtag('config', 'UA-131464131-1');
-    </script>
-  <script type="text/javascript" src="main.js"></script></body>
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="img/profile.jpg" alt="Jeff Fenchel on a sunset trail run above Donner Lake">
+        </div>
+        <div class="about-text">
+          <h2 class="section-label">About</h2>
+          <h3 class="section-title">Hi, I'm Jeff.</h3>
+          <p>I'm a software engineer based in the Sierra Nevada. I work on data platforms, ML pipelines, distributed systems, and developer tooling. I like building infrastructure that helps teams move faster.</p>
+          <p>Outside of work, I spend most of my time outdoors &mdash; hydrofoiling on Tahoe, skiing, trail running, or hiking around the Sierra.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Years Engineering</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">6,225'</span>
+              <span class="stat-label">Home Elevation</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">&infin;</span>
+              <span class="stat-label">Lines of Lake</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Adventures Section -->
+  <section id="adventures">
+    <div class="container">
+      <h2 class="section-label center">Adventures</h2>
+      <h3 class="section-title center">Outside</h3>
+      <div class="adventures-grid">
+        <div class="adventure-card tall">
+          <img src="img/foiling.jpg" alt="Hydrofoiling on Lake Tahoe" loading="lazy">
+          <div class="card-overlay">
+            <h4>Hydrofoiling</h4>
+            <p>E-foiling on Tahoe</p>
+          </div>
+        </div>
+        <div class="adventure-card">
+          <img src="img/skiing.jpg" alt="Skiing in the Sierra" loading="lazy">
+          <div class="card-overlay">
+            <h4>Skiing</h4>
+            <p>Tahoe area resorts</p>
+          </div>
+        </div>
+        <div class="adventure-card">
+          <img src="img/snow-hiking.jpg" alt="Backcountry hiking in the snow" loading="lazy">
+          <div class="card-overlay">
+            <h4>Backcountry</h4>
+            <p>Year-round in the Sierra</p>
+          </div>
+        </div>
+        <div class="adventure-card">
+          <img src="img/hiking-lake.jpg" alt="Hiking at an alpine lake" loading="lazy">
+          <div class="card-overlay">
+            <h4>Alpine Lakes</h4>
+            <p>Sierra backcountry</p>
+          </div>
+        </div>
+        <div class="adventure-card">
+          <img src="img/tahoe-rocks.jpg" alt="Above Lake Tahoe on granite" loading="lazy">
+          <div class="card-overlay">
+            <h4>Trail Running</h4>
+            <p>Above Tahoe</p>
+          </div>
+        </div>
+        <div class="adventure-card">
+          <img src="img/lake-reflection.jpg" alt="Winter mountain reflection on still water" loading="lazy">
+          <div class="card-overlay">
+            <h4>Winter Stillness</h4>
+            <p>Donner Lake in winter</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Break -->
+  <section class="parallax-break">
+    <img src="img/hero-fireworks-2.jpg" alt="Fireworks over Donner Lake" loading="lazy">
+    <div class="parallax-overlay"></div>
+    <div class="parallax-text">
+      <blockquote>"The mountains are calling and I must go."</blockquote>
+      <cite>&mdash; John Muir</cite>
+    </div>
+  </section>
+
+  <!-- Professional Section -->
+  <section id="professional">
+    <div class="container">
+      <h2 class="section-label center">Experience</h2>
+      <h3 class="section-title center">What I build</h3>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+          </div>
+          <h4>Data Platforms</h4>
+          <p>Streaming pipelines, batch processing, and the orchestration layers that connect them.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <h4>Platform Engineering</h4>
+          <p>CI/CD systems, infrastructure as code, and internal developer tooling.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36">
+              <circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+          </div>
+          <h4>Distributed Systems</h4>
+          <p>Event-driven services, message buses, and systems that need to scale reliably.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <h4>Data Engineering</h4>
+          <p>Ingestion, transformation, data quality, and getting datasets ready for analytics.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36">
+              <path d="M12 2a4 4 0 0 1 4 4c0 1.1-.9 2-2 2h-4c-1.1 0-2-.9-2-2a4 4 0 0 1 4-4z"/><path d="M8 8v2c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V8"/><path d="M6 14l-2 8h16l-2-8"/><line x1="10" y1="14" x2="10" y2="22"/><line x1="14" y1="14" x2="14" y2="22"/>
+            </svg>
+          </div>
+          <h4>Machine Learning</h4>
+          <p>Training pipelines, model optimization, and deploying inference to production.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h4>Home Automation</h4>
+          <p>Smart home systems with local LLM integration, voice pipelines, and GPU-accelerated inference.</p>
+        </div>
+      </div>
+
+      <div class="tech-stack">
+        <h4>Technologies I work with</h4>
+        <div class="tech-tags">
+          <span>Python</span>
+          <span>Go</span>
+          <span>PyTorch</span>
+          <span>TensorFlow</span>
+          <span>ONNX</span>
+          <span>SageMaker</span>
+          <span>Kubernetes</span>
+          <span>Apache Kafka</span>
+          <span>Apache Airflow</span>
+          <span>Spark</span>
+          <span>Terraform</span>
+          <span>Docker</span>
+          <span>AWS</span>
+          <span>PostgreSQL</span>
+          <span>React</span>
+          <span>CI/CD</span>
+          <span>Flink</span>
+          <span>dbt</span>
+          <span>MLflow</span>
+          <span>scikit-learn</span>
+          <span>XGBoost</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-label center">Connect</h2>
+      <h3 class="section-title center">Let's talk</h3>
+      <p class="contact-subtitle">Feel free to reach out.</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/jeffreyfenchel/" target="_blank" rel="noopener" class="contact-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/jfenc91" target="_blank" rel="noopener" class="contact-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Jeff Fenchel. Built with curiosity and a lot of coffee.</p>
+    </div>
+  </footer>
+
+  <script src="js/particles.js"></script>
+  <script src="js/image-fx.js"></script>
+  <script src="js/main.js"></script>
+</body>
 </html>
