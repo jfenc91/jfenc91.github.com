@@ -75,7 +75,6 @@ a:hover {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-inner {
@@ -258,17 +257,6 @@ a:hover {
   object-fit: cover;
 }
 
-.about-image::after {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  border: 1px solid var(--color-accent);
-  border-radius: 12px;
-  opacity: 0.3;
-  pointer-events: none;
-  z-index: 1;
-}
-
 .about-text p {
   color: var(--color-text-muted);
   font-size: 1.05rem;
@@ -281,7 +269,6 @@ a:hover {
   gap: 2.5rem;
   margin-top: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .stat {
