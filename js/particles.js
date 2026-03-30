@@ -1,7 +1,6 @@
 /* ========================================
    WebGL Particle Network
-   Connected nodes with glowing lines,
-   mouse interaction, and color shifts
+   Glowing particles with mouse interaction
    ======================================== */
 
 (function() {
@@ -16,7 +15,6 @@
   if (!gl) return;
 
   var NUM = 80;
-  var CONNECT_DIST = 0.15;
   var mouse = { x: -1, y: -1 };
 
   window.addEventListener('mousemove', function(e) {
@@ -24,7 +22,7 @@
     mouse.y = e.clientY / window.innerHeight;
   }, { passive: true });
 
-  // --- Particle state (CPU-side for connections) ---
+  // --- Particle state ---
   var particles = [];
   for (var i = 0; i < NUM; i++) {
     particles.push({
@@ -72,30 +70,6 @@
     '}'
   ].join('\n');
 
-  // --- Line shader ---
-  var lVS = [
-    'attribute vec2 a_pos;',
-    'attribute float a_alpha;',
-    'varying float v_alpha;',
-    'void main() {',
-    '  gl_Position = vec4(a_pos * 2.0 - 1.0, 0.0, 1.0);',
-    '  gl_Position.y *= -1.0;',
-    '  v_alpha = a_alpha;',
-    '}'
-  ].join('\n');
-
-  var lFS = [
-    'precision mediump float;',
-    'varying float v_alpha;',
-    'uniform float u_time;',
-    'void main() {',
-    '  float r = 0.3 + 0.15 * sin(u_time * 0.7);',
-    '  float g = 0.5 + 0.2 * sin(u_time * 0.3);',
-    '  float b = 1.0;',
-    '  gl_FragColor = vec4(r, g, b, v_alpha * 0.35);',
-    '}'
-  ].join('\n');
-
   function compile(type, src) {
     var s = gl.createShader(type);
     gl.shaderSource(s, src);
@@ -112,11 +86,9 @@
   }
 
   var pointProg = makeProgram(pVS, pFS);
-  var lineProg = makeProgram(lVS, lFS);
 
   // Buffers
   var pointBuf = gl.createBuffer();
-  var lineBuf = gl.createBuffer();
 
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
@@ -131,14 +103,11 @@
 
   // Reusable arrays
   var pointData = new Float32Array(NUM * 4);
-  var lineData = new Float32Array(NUM * NUM * 3 * 2); // worst case
 
   function draw(t) {
     var time = t * 0.001;
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
-
-    var aspect = canvas.width / canvas.height;
 
     // Update particles
     for (var i = 0; i < NUM; i++) {
@@ -174,67 +143,6 @@
       pointData[j+1] = p.y;
       pointData[j+2] = p.size;
       pointData[j+3] = p.pulse;
-    }
-
-    // Draw lines
-    var lineCount = 0;
-    for (var a = 0; a < NUM; a++) {
-      for (var b = a + 1; b < NUM; b++) {
-        var pa = particles[a], pb = particles[b];
-        var ddx = (pa.x - pb.x) * aspect;
-        var ddy = pa.y - pb.y;
-        var d = Math.sqrt(ddx * ddx + ddy * ddy);
-        if (d < CONNECT_DIST) {
-          var alpha = 1.0 - d / CONNECT_DIST;
-          alpha = alpha * alpha; // quadratic falloff
-          var li = lineCount * 6;
-          lineData[li] = pa.x;
-          lineData[li+1] = pa.y;
-          lineData[li+2] = alpha;
-          lineData[li+3] = pb.x;
-          lineData[li+4] = pb.y;
-          lineData[li+5] = alpha;
-          lineCount++;
-        }
-      }
-    }
-
-    // Also connect to mouse
-    if (mouse.x >= 0) {
-      for (var m = 0; m < NUM; m++) {
-        var pm = particles[m];
-        var mdx = (pm.x - mouse.x) * aspect;
-        var mdy = pm.y - mouse.y;
-        var md = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (md < 0.2) {
-          var ma = (1.0 - md / 0.2);
-          ma = ma * ma * 1.5;
-          var mi = lineCount * 6;
-          lineData[mi] = pm.x;
-          lineData[mi+1] = pm.y;
-          lineData[mi+2] = ma;
-          lineData[mi+3] = mouse.x;
-          lineData[mi+4] = mouse.y;
-          lineData[mi+5] = ma;
-          lineCount++;
-        }
-      }
-    }
-
-    if (lineCount > 0) {
-      gl.useProgram(lineProg);
-      gl.bindBuffer(gl.ARRAY_BUFFER, lineBuf);
-      gl.bufferData(gl.ARRAY_BUFFER, lineData.subarray(0, lineCount * 6), gl.DYNAMIC_DRAW);
-
-      var lPos = gl.getAttribLocation(lineProg, 'a_pos');
-      var lAlpha = gl.getAttribLocation(lineProg, 'a_alpha');
-      gl.enableVertexAttribArray(lPos);
-      gl.enableVertexAttribArray(lAlpha);
-      gl.vertexAttribPointer(lPos, 2, gl.FLOAT, false, 12, 0);
-      gl.vertexAttribPointer(lAlpha, 1, gl.FLOAT, false, 12, 8);
-      gl.uniform1f(gl.getUniformLocation(lineProg, 'u_time'), time);
-      gl.drawArrays(gl.LINES, 0, lineCount * 2);
-      gl.disableVertexAttribArray(lAlpha);
     }
 
     // Draw points
