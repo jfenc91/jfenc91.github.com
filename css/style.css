@@ -75,6 +75,7 @@ a:hover {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-inner {
@@ -179,8 +180,7 @@ a:hover {
   letter-spacing: -0.02em;
   line-height: 1.1;
   margin-bottom: 1rem;
-  color: #fff;
-  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 2px 40px rgba(0, 0, 0, 0.5));
 }
 
 .hero-tagline {
@@ -257,6 +257,17 @@ a:hover {
   object-fit: cover;
 }
 
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid var(--color-accent);
+  border-radius: 12px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .about-text p {
   color: var(--color-text-muted);
   font-size: 1.05rem;
@@ -269,6 +280,7 @@ a:hover {
   gap: 2.5rem;
   margin-top: 2.5rem;
   padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .stat {
@@ -341,6 +353,7 @@ a:hover {
 .card-overlay {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background: linear-gradient(
     0deg,
     rgba(0, 0, 0, 0.75) 0%,
@@ -427,7 +440,7 @@ a:hover {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 3rem;
 }
@@ -601,7 +614,7 @@ footer p {
   }
 
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -674,3 +687,90 @@ footer p {
     font-size: clamp(2.5rem, 12vw, 4rem);
   }
 }
+
+/* (custom cursor removed) */
+
+/* --- Scroll Progress Bar --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-accent), #a855f7, var(--color-warm));
+  z-index: 10001;
+  transition: width 0.05s linear;
+}
+
+/* --- Hero Text Split Animation --- */
+.hero-text-reveal .hero-char {
+  display: inline-block;
+  color: #fff;
+}
+
+/* (tagline animation handled in JS) */
+
+/* --- Section Title Reveal --- */
+
+/* --- Enhanced Card Reveal --- */
+.adventure-card.fade-up {
+  transform: translateY(30px) scale(0.97);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.adventure-card.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* --- Skill Card 3D Tilt --- */
+.skill-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.15s ease-out;
+  transform-style: preserve-3d;
+}
+
+/* (removed section label lines) */
+
+/* --- Parallax quote entrance --- */
+.parallax-text blockquote {
+  background: linear-gradient(90deg, rgba(255,255,255,0.9), var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- Tech tag stagger animation --- */
+.tech-stack.fade-up .tech-tags span {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.tech-stack.fade-up.visible .tech-tags span {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.tech-stack.visible .tech-tags span:nth-child(1) { transition-delay: 0.02s; }
+.tech-stack.visible .tech-tags span:nth-child(2) { transition-delay: 0.04s; }
+.tech-stack.visible .tech-tags span:nth-child(3) { transition-delay: 0.06s; }
+.tech-stack.visible .tech-tags span:nth-child(4) { transition-delay: 0.08s; }
+.tech-stack.visible .tech-tags span:nth-child(5) { transition-delay: 0.10s; }
+.tech-stack.visible .tech-tags span:nth-child(6) { transition-delay: 0.12s; }
+.tech-stack.visible .tech-tags span:nth-child(7) { transition-delay: 0.14s; }
+.tech-stack.visible .tech-tags span:nth-child(8) { transition-delay: 0.16s; }
+.tech-stack.visible .tech-tags span:nth-child(9) { transition-delay: 0.18s; }
+.tech-stack.visible .tech-tags span:nth-child(10) { transition-delay: 0.20s; }
+.tech-stack.visible .tech-tags span:nth-child(11) { transition-delay: 0.22s; }
+.tech-stack.visible .tech-tags span:nth-child(12) { transition-delay: 0.24s; }
+.tech-stack.visible .tech-tags span:nth-child(13) { transition-delay: 0.26s; }
+.tech-stack.visible .tech-tags span:nth-child(14) { transition-delay: 0.28s; }
+.tech-stack.visible .tech-tags span:nth-child(15) { transition-delay: 0.30s; }
+.tech-stack.visible .tech-tags span:nth-child(16) { transition-delay: 0.32s; }
+.tech-stack.visible .tech-tags span:nth-child(17) { transition-delay: 0.34s; }
+.tech-stack.visible .tech-tags span:nth-child(18) { transition-delay: 0.36s; }
+.tech-stack.visible .tech-tags span:nth-child(19) { transition-delay: 0.38s; }
+.tech-stack.visible .tech-tags span:nth-child(20) { transition-delay: 0.40s; }
+.tech-stack.visible .tech-tags span:nth-child(21) { transition-delay: 0.42s; }
